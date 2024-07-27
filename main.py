@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Se importa el csv "Movies" con sus correspondientes transformaciones
-movies_funciones = pd.read_csv('Movies_Transformaciones.csv')
+movies_funciones = pd.read_csv(Transformaciones_MOVIES.ipynb)
 
 
 
@@ -152,7 +152,7 @@ def votos_titulo(titulo_filmacion):
 
 
 # Ya que las siguientes 2 funciones requieren datos del csv "credits", se procede a importar el mismo
-credits_funciones = pd.read_csv('Credits_Transformaciones.csv')
+credits_funciones = pd.read_csv(Transformaciones_CREDITS.ipynb)
 
 import numpy as np
 

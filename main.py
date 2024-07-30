@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Se importa el csv "Movies" con sus correspondientes transformaciones
-movies_funciones = pd.read_csv("Movies_Transformaciones.csv")
+movies_funciones = pd.read_csv('Movies_Transformaciones.csv')
 
 
 
@@ -261,12 +261,11 @@ def get_director(nombre_director):
     return {'Director': nombre_director,
         'Éxito Director': exito_director,
         'Películas': peliculas_info}
-<<<<<<< HEAD
     
     
     
     
-#                                               ----> 7) SE CREA LA FUNCIÓN  "recomendacion(titulo, n_recomendaciones=5)" <----
+#                                               ----> 7) SE CREA LA FUNCIÓN  "recomendacion(titulo)" <----
 
 
 
@@ -309,5 +308,3 @@ def recomendacion(titulo):
     recommended_titles = similar_movies['title'].head(5).tolist()
 
     return {'Recomendación': recommended_titles}
-=======
->>>>>>> c01d6efabf0fe67d02a8016aefe79cacb413aeff

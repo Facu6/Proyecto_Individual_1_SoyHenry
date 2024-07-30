@@ -261,3 +261,50 @@ def get_director(nombre_director):
     return {'Director': nombre_director,
         'Éxito Director': exito_director,
         'Películas': peliculas_info}
+    
+    
+    
+    
+#                                               ----> 7) SE CREA LA FUNCIÓN  "recomendacion(titulo, n_recomendaciones=5)" <----
+
+
+
+import pandas as pd
+from sklearn.neighbors import NearestNeighbors
+
+# Leer el DataFrame
+movies_ml = pd.read_csv('Dataframe_movies_ml')
+
+# Definir las columnas de características
+feature_columns = ['runtime', 'vote_average', 'vote_count', 'release_year', 'original_language1', 'popularity1']
+
+# Definir las características para el entrenamiento del modelo
+train_features = movies_ml[feature_columns]
+titles = movies_ml['title']  # Almacenar los títulos para el uso posterior
+
+# Instanciar y entrenar el modelo KNN
+knn_model = NearestNeighbors(metric='cosine', algorithm='brute')
+knn_model.fit(train_features)
+
+@app.get('/recomendacion/{titulo}')
+def recomendacion(titulo):
+    # Obtener las características de la película
+    if titulo not in titles.values:
+        return {'Error': 'Película No Encontrada'}
+
+    movie_features = movies_ml[movies_ml['title'] == titulo][feature_columns]
+    
+    if movie_features.empty:
+        return {'Error': 'Película No Encontrada'}
+
+    # Obtener la similitud
+    distances, indices = knn_model.kneighbors(movie_features, n_neighbors=6)
+    
+    # Extraer las 5 películas más similares (excluyendo la misma película)
+    similar_indices = indices.flatten()[1:]  # Excluye la película misma
+    similar_movies = movies_ml.iloc[similar_indices]
+    
+    # Limitar las recomendaciones a las 5 primeras
+    recommended_titles = similar_movies['title'].head(5).tolist()
+
+    return {'Recomendación': recommended_titles}

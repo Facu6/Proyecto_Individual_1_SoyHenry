@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Se importa el csv "Movies" con sus correspondientes transformaciones
-movies_funciones = pd.read_csv('Movies_Transformaciones.csv')
+movies_funciones = pd.read_csv("Movies_Transformaciones.csv")
 
 
 
@@ -152,7 +152,7 @@ def votos_titulo(titulo_filmacion):
 
 
 # Ya que las siguientes 2 funciones requieren datos del csv "credits", se procede a importar el mismo
-credits_funciones = pd.read_csv('Credits_Transformaciones.csv')
+credits_funciones = pd.read_csv("Credits_Transformaciones.csv")
 
 import numpy as np
 
@@ -261,6 +261,7 @@ def get_director(nombre_director):
     return {'Director': nombre_director,
         'Éxito Director': exito_director,
         'Películas': peliculas_info}
+<<<<<<< HEAD
     
     
     
@@ -308,3 +309,5 @@ def recomendacion(titulo):
     recommended_titles = similar_movies['title'].head(5).tolist()
 
     return {'Recomendación': recommended_titles}
+=======
+>>>>>>> c01d6efabf0fe67d02a8016aefe79cacb413aeff

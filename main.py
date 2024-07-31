@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Se importa el csv "Movies" con sus correspondientes transformaciones
-movies_funciones = pd.read_csv('Movies_Transformaciones.csv')
+movies_funciones = pd.read_csv("C:/Users/dispe/OneDrive/Documentos/CLASES/Proyecto Individual 1/Transformaciones/Movies_Transformaciones.csv")
 
 
 
@@ -22,6 +22,8 @@ app = FastAPI()
 
 
 #                                               ----> 1) SE CREA LA FUNCIÓN "cantidad_filmaciones_mes(Mes)" <----
+
+
 @app.get('/cantidad_filmaciones_mes/{Mes}')
 def cantidad_filmaciones_mes(Mes):
     
@@ -152,7 +154,7 @@ def votos_titulo(titulo_filmacion):
 
 
 # Ya que las siguientes 2 funciones requieren datos del csv "credits", se procede a importar el mismo
-credits_funciones = pd.read_csv("Credits_Transformaciones.csv")
+credits_funciones = pd.read_csv("C:/Users/dispe/OneDrive/Documentos/CLASES/Proyecto Individual 1/Transformaciones/Credits_Transformaciones.csv")
 
 import numpy as np
 
@@ -268,27 +270,28 @@ def get_director(nombre_director):
 #                                               ----> 7) SE CREA LA FUNCIÓN  "recomendacion(titulo)" <----
 
 
-
+# Se importan las bibliotecas y módulos necesarios
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 
-# Leer el DataFrame
-movies_ml = pd.read_csv('Dataframe_movies_ml')
+# Se lee el Dataframe
+movies_ml = pd.read_csv("C:/Users/dispe/OneDrive/Documentos/CLASES/Proyecto Individual 1/Transformaciones/Dataframe_movies_ml")
 
-# Definir las columnas de características
+# Se definen las columnas de características
 feature_columns = ['runtime', 'vote_average', 'vote_count', 'release_year', 'original_language1', 'popularity1']
 
-# Definir las características para el entrenamiento del modelo
+# Se definen las características para el entrenamiento del modelo
 train_features = movies_ml[feature_columns]
-titles = movies_ml['title']  # Almacenar los títulos para el uso posterior
+titles = movies_ml['title']  # Almacena los títulos para el uso posterior
 
-# Instanciar y entrenar el modelo KNN
+# Se instancian y entrena el modelo KNN
 knn_model = NearestNeighbors(metric='cosine', algorithm='brute')
 knn_model.fit(train_features)
 
+# Se crea la función
 @app.get('/recomendacion/{titulo}')
 def recomendacion(titulo):
-    # Obtener las características de la película
+    # Se obtienen las características de la película
     if titulo not in titles.values:
         return {'Error': 'Película No Encontrada'}
 
@@ -297,14 +300,14 @@ def recomendacion(titulo):
     if movie_features.empty:
         return {'Error': 'Película No Encontrada'}
 
-    # Obtener la similitud
+    # Se obtiene la similitud
     distances, indices = knn_model.kneighbors(movie_features, n_neighbors=6)
     
-    # Extraer las 5 películas más similares (excluyendo la misma película)
+    # Se extraen las 5 películas más similares (excluyendo la misma película)
     similar_indices = indices.flatten()[1:]  # Excluye la película misma
     similar_movies = movies_ml.iloc[similar_indices]
     
-    # Limitar las recomendaciones a las 5 primeras
+    # Se limitan las recomendaciones a las 5 primeras
     recommended_titles = similar_movies['title'].head(5).tolist()
 
     return {'Recomendación': recommended_titles}

@@ -12,13 +12,13 @@ El objetivo es transformar y limpiar los datos de películas, construir una API 
 
 ## **Directorios y archivos del repositorio**
 
-- [**Datasets**:](Datos) Directorio donde se disponibilizan las fuentes de datos sin procesar. "movies_dataset" archivo excel / "Credits.parquet" archivo parquet.
-- [**Transformaciones**:](Datos%20Procesados%20Para%20PowerBI) Directorio donde se disponibilizan las fuentes de datos procesadas.
-- [**main.py**:](EDA.ipynb) Archivo .py donde se desarrolla la API utilizando FastAPI.
-- [**README**:](EDA.ipynb) Archivo detallando el proyecto.
-- [**Proyecto_Individual_1**:](PowerBI_ProyectoIndividual2.pbix) Carpeta donde se creó el entorno virtual.
-- [**__pycache__**:](PowerBI_ProyectoIndividual2.pbix) Carpeta creada al confeccionar el entorno virtual (Mejora el rendimiento del código).
-- [**requirements.txt**:](PowerBI_ProyectoIndividual2.pbix) Archivo para listar las dependencias del proyecto.
+- [**Datasets**:](Datasets) Directorio donde se disponibilizan las fuentes de datos sin procesar. "movies_dataset" archivo excel / "Credits.parquet" archivo parquet.
+- [**Transformaciones**:](Transformaciones) Directorio donde se disponibilizan las fuentes de datos procesadas.
+- [**main.py**:](main.py) Archivo .py donde se desarrolla la API utilizando FastAPI.
+- [**README**:](README.md) Archivo detallando el proyecto.
+- [**Proyecto_Individual_1**:](Proyecto_Individual_1) Carpeta donde se creó el entorno virtual.
+- [**__pycache__**:](__pycache__) Carpeta creada al confeccionar el entorno virtual (Mejora el rendimiento del código).
+- [**requirements.txt**:](requirements.txt) Archivo para listar las dependencias del proyecto.
 
 ## **ETAPAS DEL PROYECTO**
 

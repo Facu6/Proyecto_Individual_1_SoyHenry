@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Se importa el csv "Movies" con sus correspondientes transformaciones
-movies_funciones = pd.read_csv("C:/Users/dispe/OneDrive/Documentos/CLASES/Proyecto Individual 1/Transformaciones/Movies_Transformaciones.csv")
+movies_funciones = pd.read_csv("Transformaciones/Movies_Transformaciones.csv")
 
 
 
@@ -154,7 +154,7 @@ def votos_titulo(titulo_filmacion):
 
 
 # Ya que las siguientes 2 funciones requieren datos del csv "credits", se procede a importar el mismo
-credits_funciones = pd.read_csv("C:/Users/dispe/OneDrive/Documentos/CLASES/Proyecto Individual 1/Transformaciones/Credits_Transformaciones.csv")
+credits_funciones = pd.read_csv("Transformaciones/Credits_Transformaciones.csv")
 
 import numpy as np
 
@@ -275,7 +275,7 @@ import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 
 # Se lee el Dataframe
-movies_ml = pd.read_csv("C:/Users/dispe/OneDrive/Documentos/CLASES/Proyecto Individual 1/Transformaciones/Dataframe_movies_ml")
+movies_ml = pd.read_csv("Transformaciones/Dataframe_movies_ml")
 
 # Se definen las columnas de características
 feature_columns = ['runtime', 'vote_average', 'vote_count', 'release_year', 'original_language1', 'popularity1']
